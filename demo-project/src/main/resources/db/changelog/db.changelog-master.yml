@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      # 唯一id，建议使用Flayway的命名格式'V<version>[_<SEQ>][__description]'
+      id: V1.0_0__init
+      # 作者
+      author: Cheivin
+      # 描述
+      comment: "初始化脚本内容，加载初始数据"
+      # 启用事物
+      runInTransaction: true
+      # 变更脚本
+      changes:
+        # 创建表格
+        - createTable:
+            tableName: user
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  remarks:
+              - column:
+                  name: username
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+        # 加载数据
+        - loadData:
+            tableName: user
+            columns:
+              - column:
+                  header: username
+                  name: username
+              - column:
+                  header: password
+                  name: password
+            encoding: UTF-8
+            file: db/data/init-data.csv
+        # 标记，用于回滚时指定版本
+        - tagDatabase:
+            tag: V1.0_0__init

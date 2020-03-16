@@ -1,0 +1,16 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /${spring.application.name}
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  application:
+    name: demo
+
+  # 数据库重构和迁移
+  liquibase:
+    # 不配置默认会查找'classpath:/db/changelog/db.changelog-master.yaml'文件
+    #change-log: 'classpath:/db/changelog/db.changelog-master.yml'
+

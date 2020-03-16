@@ -1,0 +1,11 @@
+server:
+  port: 80
+  servlet:
+    context-path: /${spring.application.name}
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  application:
+    name: demo-archetype
+
